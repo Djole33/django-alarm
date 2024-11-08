@@ -1,0 +1,17 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Alarm Name" required>
+    <input type="number" name="hours" placeholder="Hours" required>
+    <input type="number" name="minutes" placeholder="Minutes" required>
+    <input type="number" name="seconds" placeholder="Seconds" required>
+    <button type="submit">Set Alarm</button>
+</form>
+
+
+{% for timer in timers %}
+{% if timer.is_time_up == False %}
+
+<a href="{% url 'timer' timer.id %}">Alarm: {{ timer.name }}</a>
+
+{% endif %}
+{% endfor %}

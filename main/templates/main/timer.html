@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ timer.name }}</title>
+    {% if not time_up %}
+        <meta http-equiv="refresh" content="1">
+    {% endif %}
+</head>
+<body>
+    <h1>Timer: {{ timer.name }}</h1>
+    {% if time_up %}
+        <p>The timer has gone off!</p>
+        <audio id="alarm-sound" src="media/songs/Godzila.mp3" autoplay></audio>
+        <script>
+            document.getElementById("alarm-sound").play();
+        </script>
+    {% else %}
+        <p>Time remaining: {{ hours }}h {{ minutes }}m {{ seconds }}s</p>
+    {% endif %}
+</body>
+</html>
